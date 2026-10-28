@@ -17,3 +17,5 @@ pip install pandas
 For PyTorch, visit their [official website](https://pytorch.org/get-started/locally/)
 and select the options for Python. If your system has an NVIDIA discrete graphics card,
 then please select the option for the latest CUDA version you have.
+
+The dataset used for this project is found at https://www.kaggle.com/competitions/digit-recognizer/data.
