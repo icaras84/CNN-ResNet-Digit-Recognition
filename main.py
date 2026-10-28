@@ -35,5 +35,6 @@ def test_modules() -> None:
 def main() -> None:
     test_modules()
 
+
 if __name__ == "__main__":
     main()
