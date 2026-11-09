@@ -18,7 +18,7 @@ class ConvolveBlock(nn.Module):
     def __init__(self, in_channels: int, out_channels: int, stride: int = 1):
         super().__init__()
         self.block = nn.Sequential(
-            # construct a convolution layer (w/ no bias)
+            # construct a convolution layer (w/o bias)
             nn.Conv2d(in_channels, out_channels, kernel_size=3,
                       stride=stride, padding=1, bias=False),
             nn.BatchNorm2d(out_channels),
@@ -37,6 +37,10 @@ class ConvolveBlock(nn.Module):
 
 
 class ResidualBlock(nn.Module):
+    """
+    A block that represents a block in a ResNet. Contains two convolutional
+    layers and one passthrough layer.
+    """
     def __init__(self, in_channels: int, out_channels: int, stride: int = 1):
         super().__init__()
 
@@ -55,7 +59,8 @@ class ResidualBlock(nn.Module):
         # construct the shortcut layer
         self.shortcut: nn.Sequential = nn.Sequential()
 
-        #
+        # if there is downsampling, then we must define the shortcut as a
+        # down-sample layer to match output dims
         if in_channels != out_channels or stride != 1:
             self.shortcut = nn.Sequential(
                 nn.Conv2d(in_channels, out_channels,
@@ -66,6 +71,12 @@ class ResidualBlock(nn.Module):
         self.activation = nn.ReLU()
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        :param x: input tensor
+        :param x: a tensor that is passed through the block for processing
+        :return: another tensor that is the sum of the pass-through and the
+        result from two convolutional layers
+        """
         shortcut_result = self.shortcut(x)
 
         # layer 1 conv; nothing special
