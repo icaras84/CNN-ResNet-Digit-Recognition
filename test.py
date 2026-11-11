@@ -3,6 +3,7 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 import torch
+import os
 
 
 def test_modules() -> None:
@@ -25,7 +26,10 @@ def test_modules() -> None:
     plt.ylabel('y')
     plt.title('Parabola')
 
-    plt.savefig('/data/test/parabola.png')
+    if not os.path.exists('./data/test_result/'):
+        os.makedirs('./data/test_result/')
+
+    plt.savefig('./data/test_result/parabola.png')
 
     # test pytorch
     x = torch.rand(5, 3)
