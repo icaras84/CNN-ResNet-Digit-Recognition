@@ -9,9 +9,10 @@ class UnifiedNetwork(nn.Module):
     A neural network that can have stages of arbitrary block types
     of any number.
     """
-    def __init__(self, in_channels: int,
-                 stage_configs: \
-                         list[tuple[Type[NetworkBlock], int, int, int, int]],
+    def __init__(self,
+                 stage_configs: list[tuple[
+                     Type[NetworkBlock], int, int, int, int
+                 ]],
                  num_classes: int):
         super().__init__()
 
@@ -83,8 +84,9 @@ class ResidualNetworkBlock(NetworkBlock):
 
         # reuse the Convolve block because first "layer" of this residual
         # block is "normal"
-        self.conv_block: ConvolveNetworkBlock = ConvolveNetworkBlock(in_channels,
-                                                                     out_channels, stride)
+        self.conv_block: ConvolveNetworkBlock = \
+            ConvolveNetworkBlock(in_channels, out_channels, stride)
+
 
         # manually define the second convolution layer because
         # residual skip/shortcut
