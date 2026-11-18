@@ -87,7 +87,6 @@ class ResidualNetworkBlock(NetworkBlock):
         self.conv_block: ConvolveNetworkBlock = \
             ConvolveNetworkBlock(in_channels, out_channels, stride)
 
-
         # manually define the second convolution layer because
         # residual skip/shortcut
         self.conv2: nn.Module = nn.Conv2d(out_channels, out_channels,
