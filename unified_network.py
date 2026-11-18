@@ -106,7 +106,7 @@ class ResidualNetworkBlock(NetworkBlock):
                 nn.BatchNorm2d(out_channels)
             )
 
-        self.activation = nn.ReLU()
+        self.activation: nn.Module = nn.ReLU()
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
@@ -125,4 +125,4 @@ class ResidualNetworkBlock(NetworkBlock):
         out = self.bn2(self.conv2(out))
 
         out += shortcut_result
-        return out
+        return self.activation(out)
