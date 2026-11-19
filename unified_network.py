@@ -17,6 +17,12 @@ class NetworkBlock(nn.Module):
     parameters are.
     """
     def __init__(self, in_channels: int, out_channels: int, stride: int = 1):
+        """
+        Constructor stub for subclasses.
+        :param in_channels:
+        :param out_channels:
+        :param stride:
+        """
         super().__init__()
 
 
