@@ -1,5 +1,6 @@
 """
 Michael Kong
+William Phomphakdee
 CSE 163
 This program implements various functions for preprocessing and visualizing
 image and label data sourced from a given CSV file.
@@ -11,9 +12,19 @@ import seaborn as sns
 import numpy as np
 import torch
 from numpy.typing import NDArray
+import os
 
 TRAIN_DATA = 'data/csv/train.csv'
 
+def plt_save(filename: str) -> None:
+    """
+    A method for saving a matplotlib figure to the test_result directory.
+    :param filename: valid file path
+    :return: None
+    """
+    if not os.path.exists('./data/test_result/'):
+        os.makedirs('./data/test_result/')
+    plt.savefig(f'./data/test_result/{filename}')
 
 def csv_to_df(path: str, detail: bool = False) -> pd.DataFrame:
     """
@@ -41,10 +52,11 @@ def plot_label_counts(data: pd.DataFrame) -> None:
     count_plot.fig.suptitle('Distribution of Digit Labels')
     count_plot.set_axis_labels('Digit', 'Number of Images')
     count_plot.ax.legend()
+    plt_save("label_counts.png")
     plt.show()
 
 
-def extract_images(data: pd.DataFrame) -> tuple[NDArray, NDArray]:
+def extract_images(data: pd.DataFrame) -> tuple:
     """
     Given a DataFrame of labels and image data with dimension n by 785 parses
     the labels into a Numpy array of length n and images into a n by 28 by 28
@@ -86,6 +98,7 @@ def display_images(images: NDArray, labels: NDArray,
     for ax in axs.flat[count:]:
         ax.axis('off')
     plt.tight_layout()
+    plt_save("digit_samples.png")
     plt.show()
 
 
