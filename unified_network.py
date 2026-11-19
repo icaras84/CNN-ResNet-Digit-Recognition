@@ -1,10 +1,11 @@
 """
 William Phomphakdee
-CSE163
+CSE 163
 
 This file contains code for defining a flexible neural network
 that utilizes blocks and stages to process images.
 """
+
 from typing import Type
 
 import torch

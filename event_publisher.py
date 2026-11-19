@@ -1,10 +1,11 @@
 """
 William Phomphakdee
-CSE163
+CSE 163
 
 This file contains code for an event-based pattern, the publisher
 subscriber model.
 """
+
 from collections.abc import Callable
 
 

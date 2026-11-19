@@ -1,3 +1,12 @@
+"""
+William Phomphakdee
+CSE 163
+
+This file is a script for testing the modules installed with
+pip commands in the README.md file. This is important to verify that
+all external libraries are installed.
+"""
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
