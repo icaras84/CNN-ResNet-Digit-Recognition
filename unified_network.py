@@ -20,9 +20,9 @@ class NetworkBlock(nn.Module):
     def __init__(self, in_channels: int, out_channels: int, stride: int = 1):
         """
         Constructor stub for subclasses.
-        :param in_channels:
-        :param out_channels:
-        :param stride:
+        :param in_channels: input channels for this block
+        :param out_channels: output channels for this block
+        :param stride: downsampling rate for this block (1 is no downsampling)
         """
         super().__init__()
 
@@ -139,4 +139,9 @@ class UnifiedNetwork(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        Passes the input through the network and returns the result.
+        :param x: input tensor
+        :return: output tensor
+        """
         return self._post_processing(self._stages(x))
