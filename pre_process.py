@@ -16,6 +16,7 @@ import os
 
 TRAIN_DATA = 'data/csv/train.csv'
 
+
 def plt_save(filename: str) -> None:
     """
     A method for saving a matplotlib figure to the test_result directory.
@@ -25,6 +26,7 @@ def plt_save(filename: str) -> None:
     if not os.path.exists('./data/test_result/'):
         os.makedirs('./data/test_result/')
     plt.savefig(f'./data/test_result/{filename}')
+
 
 def csv_to_df(path: str, detail: bool = False) -> pd.DataFrame:
     """
